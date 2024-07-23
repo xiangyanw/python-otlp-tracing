@@ -77,6 +77,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+
+OTEL_EXPORTER_OTLP_ENDPOINT = 'http://localhost:4317' # Replace with your common tracing backend endpoint
+
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -108,6 +111,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
+OTEL_PYTHON_DJANGO_INSTRUMENT_DATABASE_API = True
 USE_I18N = True
 
 USE_L10N = True
