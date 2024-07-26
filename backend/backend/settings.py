@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'opentelemetry.instrumentation.django.middleware.OpenTelemetryMiddleware',
+    #'opentelemetry.instrumentation.django.middleware.OpenTelemetryMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -78,10 +79,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'backend',
-        'USER': 'backend',
-        'PASSWORD': 'backend_password',
-        'HOST': 'localhost',
+        'NAME': 'otlpdemo',
+        'USER': 'demo',
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
         'PORT': '3306',
     }
 }
